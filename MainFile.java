@@ -22,17 +22,20 @@ public class MainFile {
             weight = input.nextInt();
             W.addingInfo(weights, weight, i);
         }
-        W.print(weights);
 
         //calculate the remaining weight for goal
         remainingWeight = weights[6] - goal;
         if (remainingWeight < 0){
-            remainingWeight = remainingWeight * -1;
-            System.out.println("you need to gain " + remainingWeight + " pounds.");
+            remainingWeight = remainingWeight * -1;     //multiply by -1 if the number is negative
+            System.out.println("you need to gain " + remainingWeight + " pounds for your goal weight.");
         } else {
-            System.out.println("you need to lose " + remainingWeight + " pounds.");
+            System.out.println("you need to lose " + remainingWeight + " pounds for your goal weight.");
         }
 
+        //print out the weights
+        W.print(weights);
+
+        //ask user what days they want to calculate the weight 
         System.out.println("From which day to day do you want to calculate you weight change? ");
         System.out.println("1: Monday");
         System.out.println("2: Tuesday");
@@ -42,11 +45,14 @@ public class MainFile {
         System.out.println("6: Saturday");
         System.out.println("7: Sunday");
 
+        //store the input
         start = input.nextInt();
         end = input.nextInt();
 
+        //calculate weight and store it in calculateWeight
         calculatedWeight = W.calculateWeight(weights, start, end);
         
+        //print out the result
         System.out.println("The weight changes from day" + start + " to day" + end + " is " + calculatedWeight);
         input.close();
     }
